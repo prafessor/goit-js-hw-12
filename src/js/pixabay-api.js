@@ -1,17 +1,17 @@
-export const fetchPhotoByQuery = searchedQuery => {
-  const searchParams = new URLSearchParams({
-    key: '48498756-24fea4538a1b2e6f47cfee5c0',
-    q: searchedQuery,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-  });
+import axios from 'axios';
 
-  return fetch(`https://pixabay.com/api/?${searchParams}`).then(responce => {
-    if (!responce.ok) {
-      throw new Error(responce.status);
-    }
+export const fetchPhotoByQuery = async (searchedQuery, pageId) => {
+  const searchParams = {
+    params: {
+      key: '48498756-24fea4538a1b2e6f47cfee5c0',
+      q: searchedQuery,
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
+      page: pageId,
+      per_page: 15,
+    },
+  };
 
-    return responce.json();
-  });
+  return await axios.get(`https://pixabay.com/api/`, searchParams);
 };

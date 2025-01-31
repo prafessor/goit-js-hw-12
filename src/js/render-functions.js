@@ -12,7 +12,7 @@ export const createGalleryCardTemplate = data => {
       } = photo;
 
       return `
-      <li class="gallery-item">
+      <li class="gallery-item js-gallery-item">
         <a class="gallery-link js-gallery-link" href="${largeImageURL}">
           <img class="gallery-img" src="${webformatURL}" alt="${tags}">
           <div class="gallery-addition">
